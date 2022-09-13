@@ -11,35 +11,55 @@
 
                     <div class="row">
                         <div class="col-6 mb-3">
-                            <label for="nameInput" class="form-label">ФИО</label>
-                            <input type="text" name="name" class="form-control" id="nameInput" value="{{ old('name') }}" placeholder="Введите ФИО" maxlength="100" required autofocus>
+                            <label for="nameInput" class="form-label">Название</label>
+                            <input type="text" name="name" class="form-control" id="nameInput" placeholder="Введите названия категорий" maxlength="100" required autofocus>
                         </div>
-                        <div class="col-6  mb-3">
+                        <div class="col-6 mb-3">
                             <label for="mrnInput" class="form-label">mrn</label>
-                            <input type="text" name="mrn" class="form-control" id="mrnInput" value="{{ old('mrn') }}" placeholder="Введите mrn">
+                            <input type="text" name="mrn" class="form-control" id="mrnInput"  placeholder="Введите mrn" maxlength="100" required autofocus>
                         </div>
-
-                        <div class="col-6 col-lg-6 mb-3">
-                            <label for="referenceNoInput" class="form-label">referenceNo</label>
-                            <input type="text" name="reference_no" class="form-control" id="referenceNoInput" placeholder="referenceNo">
+                        <div class="col-6 mb-3">
+                            <label for="reference_noInput" class="form-label">reference_no</label>
+                            <input type="text" name="reference_no" class="form-control" id="reference_noInput"  placeholder="Введите reference_no" maxlength="100" required autofocus>
                         </div>
-
-                        <div class="col-6  mb-3">
-                            <label for="birthDateInput" class="form-label">Birth Date</label>
-                            <input type="date" name="birth_date" class="form-control" id="birthDateInput" value="{{ old('birth_date') }}" placeholder="Введите номер телефона">
-                        </div>
-
-                        <div class="col-6  mb-3">
-                            <label for="locationInput" class="form-label">Location</label>
-                            <input type="text" name="location" class="form-control" id="locationInput" value="{{ old('location') }}" placeholder="Location">
-                        </div>
-                        <input type="hidden" name="type" value="0">
                         <div class="col-12 col-lg-6 mb-3">
                             <label for="genderSelect" class="form-label">Пол</label>
                             <select name="gender" class="form-select" id="genderSelect" data-toggle="select" required>
                                 <option value="male" @if (old('gender') == 1) selected @endif>Мужской</option>
                                 <option value="female" @if (old('gender') != 1) selected @endif>Женский</option>
                             </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="birth_dateInput" class="form-label">birth_date</label>
+                            <input type="date" name="birth_date" class="form-control" id="birth_dateInput" placeholder="Введите birth_date" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="locationInput" class="form-label">location</label>
+                            <input type="text" name="location" class="form-control" id="locationInput" placeholder="Введите location" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="lab_idInput" class="form-label">lab_id</label>
+                            <input type="text" name="lab_id" class="form-control" id="lab_idInput" placeholder="Введите lab_id" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="sample_noInput" class="form-label">sample_no</label>
+                            <input type="text" name="sample_no" class="form-control" id="sample_noInput"  placeholder="Введите sample_no" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="passport_NoInput" class="form-label">passport_no</label>
+                            <input type="text" name="passport_no" class="form-control" id="passport_NoInput" placeholder="Введите passport_no" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="reg_dateInput" class="form-label">reg_date</label>
+                            <input type="datetime-local" name="reg_date" class="form-control" id="reg_dateInput" placeholder="Введите reg_date" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="collection_dateInput" class="form-label">collection_date</label>
+                            <input type="datetime-local" name="collection_date" class="form-control" id="collection_dateInput" placeholder="Введите collection_date" maxlength="100" required autofocus>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="reporting_dateInput" class="form-label">reporting_date</label>
+                            <input type="datetime-local" name="reporting_date" class="form-control" id="reporting_dateInput"  placeholder="Введите reporting_date" maxlength="100" required autofocus>
                         </div>
 
                     </div>

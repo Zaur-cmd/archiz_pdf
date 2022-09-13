@@ -24,7 +24,7 @@ class VisitorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => 'string',
+            'name'              => 'required|string',
             'mrn'               => 'string',
             'reference_no'      => 'string',
             'gender'            => 'string',

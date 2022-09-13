@@ -50,7 +50,8 @@ class VisitorController extends Controller
 
         view()->share('dashboard.visitor.export',$user);
 
-        $pdf = PDF::loadView('dashboard.visitor.export',['user' => $user]);
+        $pdf = PDF::loadView('dashboard.visitor.export',['user' => $user])->setOptions(['defaultFont' => 'dashboard.visitor.export']);
+        ;
 
         return $pdf->stream();
     }
