@@ -46,9 +46,9 @@
                                         <a href="{{ route('visitor.show', $visitor->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="file">
                                             <span class="fe fe-file"></span>
                                         </a>
-                                        <a href="{{ route('visitor.download', $visitor->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="file">
+                                        {{-- <a href="{{ route('visitor.download', $visitor->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="file">
                                             <span class="fe fe-download"></span>
-                                        </a>
+                                        </a> --}}
 
                                         <form action="{{ route('visitor.destroy', $visitor->id) }}" id="item{{ $visitor->id }}" method="POST">
                                             @csrf
