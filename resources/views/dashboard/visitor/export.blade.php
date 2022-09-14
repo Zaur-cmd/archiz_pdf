@@ -114,7 +114,7 @@
                     </li>
                     <li class="flex">
                         <label class="flex-1" for="Passport">Passport No:</label>
-                        <span>{{$user->passport_No}}</span>
+                        <span>{{$user->passport_no}}</span>
                     </li>
                     <li class="flex">
                         <label class="flex-1" for="Reg">Reg Date:</label>
@@ -238,7 +238,7 @@
             </li>
             <li class="flex">
                 <label class="flex-1" for="Reference">Reference no:</label>
-                <span class="flex-1">{{$user->reference_no}}</span>
+                <span class="flex-1">{{$user->reference_тo}}</span>
             </li>
             <li class="flex">
                 <label class="flex-1" for="Gender">Gender:</label>

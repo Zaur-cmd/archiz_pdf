@@ -11,9 +11,7 @@
         <div class="navbar-user d-md-none">
             <div class="dropdown">
                 <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-sm avatar-online">
-                        <img src="https://source.unsplash.com/collection/190727/100x100" class="img-fluid rounded-circle" alt="Феникс">
-                    </div>
+
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarIcon">
@@ -28,15 +26,7 @@
         </div>
 
         <div class="collapse navbar-collapse" id="sidebarCollapse">
-            <h6 class="navbar-heading">Пользователи</h6>
 
-            <ul class="navbar-nav mb-md-4">
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('*/users*') ? 'active' : '' }}" href="{{ route('users.index', ['type' => 0]) }}"><i class="fe fe-users"></i>Пользователи</a>
-                </li>
-                <li class="nav-item">
-                </li>
-            </ul>
 
             <h6 class="navbar-heading">Услуги</h6>
 
@@ -47,21 +37,29 @@
 
             </ul>
 
+            <h6 class="navbar-heading">Пользователи</h6>
 
+            <ul class="navbar-nav mb-md-4">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('*/users*') ? 'active' : '' }}" href="{{ route('users.index', ['type' => 0]) }}"><i class="fe fe-users"></i>Пользователи</a>
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
             <div class="mt-auto"></div>
 
             <div class="navbar-user d-none d-md-flex justify-content-end" id="sidebarUser">
                 <div class="dropup">
                     <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown">
                         <div class="avatar avatar-sm avatar-online">
-                            <img src="https://source.unsplash.com/collection/190727/100x100" class="img-fluid rounded-circle" alt="Феникс">
+                            <img src="" class="img-fluid rounded-circle" alt="Выход">
                         </div>
                     </a>
 
                     <div class="dropdown-menu" style="left: 0; transform: none;">
-                        <a href="#" class="dropdown-item" onclick="document.getElementById('logout').submit()">
+                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="document.getElementById('logout').submit()">
                             Выйти
-                            <form action="" method="POST" id="logout" accept-charset="utf-8">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </a>

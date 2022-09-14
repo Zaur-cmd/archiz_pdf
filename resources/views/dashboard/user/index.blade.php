@@ -22,7 +22,7 @@
                             <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">ФИО</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-username">Номер телефона</a>
                             </th>
-                            <th><a href="#" class="text-muted list-sort" data-sort="user-username">Время создания</a>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-username">Почта</a>
                             </th>
                             <th></th>
                         </tr>

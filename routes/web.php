@@ -1,18 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Web\AuthController;
-use App\Http\Controllers\Admin\{UserController as AdminUserController,
-    CategoryController as AdminCategoryController,
-    FavoriteController as AdminFavoriteController,
-    RatingController as AdminRatingController,
-    OrderStatusController,
-    PortfolioController,
-    ServiceCategoryController,
-    ServiceController,
-    SocialMediaController,
-    OrderController,
-    VisitorController};
+use App\Http\Controllers\Admin\{UserController as AdminUserController, VisitorController};
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +16,16 @@ use App\Http\Controllers\Admin\{UserController as AdminUserController,
 |
 */
 
-Route::get('/privacy_navbat', function () {
-    return view('privacy_navbat');
-});
-
 Route::get('/', function () {
     return view('auth.login');
 })->name('login.form');
+
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return view('auth.login');
+})->name('logout');
+
 
 Route::post('login', AuthController::class)->name('admin.login');
 Route::get('show/{id}', [VisitorController::class,'show'])->name('visitor.file');

@@ -19,7 +19,18 @@
                     <thead>
                         <tr>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-id">#</a></th>
-                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Название</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Name</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">MRN</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Reference No</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Gender</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Birth Date</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Lab Id</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Sample No</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Passport No</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Reg Date</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Collection Date</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">Reporting Date</a></th>
+
                             <th></th>
                         </tr>
                     </thead>
@@ -34,7 +45,7 @@
                                 <td class="user-birth_date">{{ $visitor->birth_date }}</td>
                                 <td class="user-location">{{ $visitor->lab_id }}</td>
                                 <td class="user-location">{{ $visitor->sample_no }}</td>
-                                <td class="user-location">{{ $visitor->passport_No }}</td>
+                                <td class="user-location">{{ $visitor->passport_no }}</td>
                                 <td class="user-location">{{ $visitor->reg_date }}</td>
                                 <td class="user-location">{{ $visitor->collection_date }}</td>
                                 <td class="user-location">{{ $visitor->reporting_date }}</td>

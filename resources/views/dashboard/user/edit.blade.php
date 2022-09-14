@@ -11,7 +11,7 @@
                     @method('PATCH')
 
                     <div class="row">
-                        <div class="col-12 mb-3">
+                        <div class="col-6 mb-3">
                             <label for="nameInput" class="form-label">ФИО</label>
                             <input type="text" name="name" class="form-control" id="nameInput" value="{{ old('name', $user->name) }}" placeholder="Введите ФИО" maxlength="100" required autofocus>
                         </div>
@@ -26,17 +26,23 @@
                         </div>
 
                         <div class="col-12 col-lg-6 mb-3">
-                            <label for="passwordInput" class="form-label">Пароль</label>
-                            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Введите новый пароль">
-                        </div>
-
-                        <div class="col-12 col-lg-6 mb-3">
                             <label for="genderSelect" class="form-label">Пол</label>
                             <select name="gender" class="form-select" id="genderSelect" data-toggle="select" required>
                                 <option value="1" @if ($user->gender == 1) selected @endif>Мужской</option>
                                 <option value="0" @if ($user->gender != 1) selected @endif>Женский</option>
                             </select>
                         </div>
+
+                        <div class="col-12 col-lg-6 mb-3">
+                            <label for="passwordInput" class="form-label">Пароль</label>
+                            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Введите новый пароль">
+                        </div>
+                        <div class="col-12 col-lg-6 mb-3">
+                            <label for="password_confirmationInput" class="form-label">Подтверждение пароля</label>
+                            <input type="password" name="password_confirmation" class="form-control" id="password_confirmationInput" placeholder="Подвердите пароля">
+                        </div>
+
+
 
                     </div>
 
