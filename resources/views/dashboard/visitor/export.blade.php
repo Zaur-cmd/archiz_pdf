@@ -60,7 +60,8 @@
             <h3 class="text-lg gray-text">CPS Clinical Pathology Services</h3>
         </div>
         <div class="w-2/12 flex justify-end">
-            <img height="70" width="70" src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://pdf.loc/show/{{ $user['id']}}" alt="">
+            <img id="qrHolder" height="70" width="70" src="#" alt="">
+            <input id="userId" type="hidden" value="{{ $user['id']}}">
             {{-- <img height="70" width="70" src="{{URL('storage/img/qrSample.png')}}" alt=""> --}}
         </div>
     </div>
@@ -293,6 +294,26 @@
         <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" fill="#fff"><path d="M16.55 26.45h1.85V22.3h2.4q.8 0 1.325-.525.525-.525.525-1.325v-2.4q0-.8-.525-1.325Q21.6 16.2 20.8 16.2h-4.25Zm1.85-6v-2.4h2.4v2.4Zm6.45 6h4.2q.75 0 1.3-.525t.55-1.325v-6.55q0-.8-.55-1.325-.55-.525-1.3-.525h-4.2Zm1.85-1.85v-6.55h2.35v6.55Zm6.65 1.85h1.85V22.3h2.5v-1.85h-2.5v-2.4h2.5V16.2h-4.35ZM13 38q-1.2 0-2.1-.9-.9-.9-.9-2.1V7q0-1.2.9-2.1.9-.9 2.1-.9h28q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h28V7H13v28Zm-6 9q-1.2 0-2.1-.9Q4 42.2 4 41V10h3v31h31v3Zm6-37v28V7Z"/></svg>
     </button>
 @endauth
+<script>
+    const getBase64Image = (url) => {
+        const img = new Image();
+        let imgHolder = document.getElementById('qrHolder')
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            const dataURL = canvas.toDataURL("image/png");
+            imgHolder.setAttribute('src',dataURL)
+            console.log(dataURL)
+        }
+        img.src = url
+    }
+    let userId = document.getElementById('userId').value
+    getBase64Image(`https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://pdf.loc/show/${userId}`)
+</script>
 <script>
     function generatePdf(){
     var element = document.getElementById('divToExport');
