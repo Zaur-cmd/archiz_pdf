@@ -21,7 +21,8 @@
                     }
                 },
                 fontSize:{
-                    'xxs': '10.5px'
+                    'xxs': '10.5px',
+                    'text-sm': '12px'
                 }
             }
         }
@@ -49,8 +50,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
-<body>
-<main id="divToExport" class="w-doc mx-auto px-4 py-4">
+<body class="md:bg-transparent bg-gray-200">
+<main id="divToExport" class="w-doc mx-auto px-4 py-4 md:block hidden">
     <!-- Header -->
     <div class="flex justify-between items-start">
         <div class="w-10/12 flex gap-8 items-end">
@@ -59,7 +60,9 @@
             <h3 class="text-lg gray-text">CPS Clinical Pathology Services</h3>
         </div>
         <div class="w-2/12 flex justify-end">
-            <img height="70" width="70" src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://pdf.loc/show/{{ $user['id']}}" alt="">
+            <img id="qrHolder" height="70" width="70" src="#" alt="">
+            <input id="userId" type="hidden" value="{{ $user['id']}}">
+            {{-- <img height="70" width="70" src="{{URL('storage/img/qrSample.png')}}" alt=""> --}}
         </div>
     </div>
     <!-- /Header -->
@@ -93,7 +96,7 @@
                 </li>
             </ul>
         </div>
-        <div class="flex items-end">
+        <div class="flex items-end -mt-3">
             <div class="w-8/12">
                 <h6 class="font-bold text-md">
                     Ref By Dr
@@ -223,7 +226,113 @@
     <p class="text-center font-bold text-xxs">
         Al Quoz, Industrial Area 4 - P.O Box 26148, Dub ai, UAE - Tel: +971 55 538 7248 - Fax: +971 4 386 9998 - Email: <a href="mailto: customercaredxb@menalabs.com">customercaredxb@menalabs.com</a>
     </p>
-    <button class="absolute top-0 right-4" id="exportMe">export</button>
 </main>
+<main class="md:hidden block container mx-auto px-4 py-4 mobileOnly">
+    <div class="text-gray-600 font-medium">
+        <h4 class="text-lg uppercase">{{ $user['name']}}</h4>
+        <h4 class="text-lg uppercase">COVID-13 by RT-PCR Result</h4>
+        <ul class="leading-8">
+            <li class="flex">
+                <label class="flex-1" for="MRN">MRN:</label>
+                <span class="flex-1">{{$user->mrn}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Reference">Reference no:</label>
+                <span class="flex-1">{{$user->reference_no}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Gender">Gender:</label>
+                <span class="flex-1">{{$user->gender}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="DateB">Date of birth:</label>
+                <span class="flex-1">{{$user->birth_date}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Location">Location:</label>
+                <span class="flex-1">{{$user->location}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="ID">Lab ID:</label>
+                <span class="flex-1">{{$user->lab_id}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Sample">Sample No:</label>
+                <span class="flex-1">{{$user->sample_no}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Passport">Passport No:</label>
+                <span class="flex-1">{{$user->passport_no}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Reg">Reg Date:</label>
+                <span class="flex-1">{{$user->reg_date}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Collection">Collection Date:</label>
+                <span class="flex-1">{{$user->collection_date}}</span>
+            </li>
+            <li class="flex">
+                <label class="flex-1" for="Reporting">Reporting Date:</label>
+                <span class="flex-1">{{$user->reporting_date}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="mt-5  p-2 rounded-md bg-white shadow-md">
+        <h5 class="text-lg font-medium border-b border-gray-200 pb-3 text-gray-600">Coronavirus, RNA (SARS-Co V-2, Real-time PCR) smear qualitative</h5>
+        <p style="font-size: 14px" class="mt-2 py-3">
+           COVID-19 by Rt-PCR - NOT DETECTED(NEGATIVE)
+        </p>
+    </div>
+    <div class="mt-5  p-2 rounded-md bg-white shadow-md">
+        <h5 class="text-lg font-medium border-b border-gray-200 pb-3 text-gray-600">Menalab - Dubai - UAE</h5>
+    </div>
+</main>
+
+@auth
+    <button class="fixed text-uppercase text-white font-medium bottom-4 right-4 bg-green-500 rounded-full h-20 w-20 animate-bounce  items-center justify-center md:flex hidden" id="exportMe">
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" fill="#fff"><path d="M16.55 26.45h1.85V22.3h2.4q.8 0 1.325-.525.525-.525.525-1.325v-2.4q0-.8-.525-1.325Q21.6 16.2 20.8 16.2h-4.25Zm1.85-6v-2.4h2.4v2.4Zm6.45 6h4.2q.75 0 1.3-.525t.55-1.325v-6.55q0-.8-.55-1.325-.55-.525-1.3-.525h-4.2Zm1.85-1.85v-6.55h2.35v6.55Zm6.65 1.85h1.85V22.3h2.5v-1.85h-2.5v-2.4h2.5V16.2h-4.35ZM13 38q-1.2 0-2.1-.9-.9-.9-.9-2.1V7q0-1.2.9-2.1.9-.9 2.1-.9h28q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h28V7H13v28Zm-6 9q-1.2 0-2.1-.9Q4 42.2 4 41V10h3v31h31v3Zm6-37v28V7Z"/></svg>
+    </button>
+@endauth
+<script>
+    const getBase64Image = (url) => {
+        const img = new Image();
+        let imgHolder = document.getElementById('qrHolder')
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            const dataURL = canvas.toDataURL("image/png");
+            imgHolder.setAttribute('src',dataURL)
+            console.log(dataURL)
+        }
+        img.src = url
+    }
+    let userId = document.getElementById('userId').value
+    getBase64Image(`https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://pdf.loc/show/${userId}`)
+</script>
+<script>
+    function generatePdf(){
+    var element = document.getElementById('divToExport');
+    element.style.width = '800px';
+    element.style.height = '1050px';
+    var opt = {
+        margin:       0,
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 1 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait',precision: 12 }
+      };
+    // choose the element and pass it to html2pdf() function and call the save() on it to save as pdf.
+    html2pdf().set(opt).from(element).save();
+  }
+  document.getElementById('exportMe').addEventListener('click', () => {
+        console.log('first')
+        generatePdf()
+    })
+</script>
 </body>
 </html>
