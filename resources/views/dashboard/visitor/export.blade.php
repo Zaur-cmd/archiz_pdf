@@ -10,7 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -37,7 +40,7 @@
             color: #646b79;
         }
         .client__info, .client__info label, .client__info span{
-            font-family: 'Merriweather', serif !important;
+            font-family: 'Courier Prime', monospace !important;
             font-weight: 900;
             font-size: 10px;
         }
@@ -59,15 +62,15 @@
             <img height="100px" width="100px" src="{{URL('storage/img/cap.png')}}" alt="">
             <h3 class="text-lg gray-text">CPS Clinical Pathology Services</h3>
         </div>
-        <div class="w-2/12 flex justify-end">
-            <img id="qrHolder" height="70" width="70" src="#" alt="">
+        <div class="w-2/12 flex justify-end relative">
+            <img class="absolute top-0 right-0" id="qrHolder" height="90" width="90" src="#" alt="">
             <input id="userId" type="hidden" value="{{ $user['id']}}">
             {{-- <img height="70" width="70" src="{{URL('storage/img/qrSample.png')}}" alt=""> --}}
         </div>
     </div>
     <!-- /Header -->
     <!-- Client info -->
-    <div class="flex flex-col">
+    <div class="flex flex-col mt-10">
         <div class="w-6/12">
             <ul class="">
                 <li class="flex client__info">
@@ -207,7 +210,7 @@
             </p>
         </div>
         <div class="flex-1 flex flex-col items-center">
-            <img height="150px" width="150px" src="{{URL('storage/img/stamp.png')}}" alt="">
+            <img height="130px" width="130px" src="{{URL('storage/img/stamp.png')}}" alt="">
         </div>
         <div class="flex-1 flex flex-col items-center font-bold text-xxs">
             <img height="100px" width="100px" src="{{URL('storage/img/signature.png')}}" alt="">
@@ -227,66 +230,53 @@
         Al Quoz, Industrial Area 4 - P.O Box 26148, Dub ai, UAE - Tel: +971 55 538 7248 - Fax: +971 4 386 9998 - Email: <a href="mailto: customercaredxb@menalabs.com">customercaredxb@menalabs.com</a>
     </p>
 </main>
-<main class="md:hidden block container mx-auto px-4 py-4 mobileOnly">
-    <div class="text-gray-600 font-medium">
-        <h4 class="text-lg uppercase">{{ $user['name']}}</h4>
-        <h4 class="text-lg uppercase">COVID-13 by RT-PCR Result</h4>
-        <ul class="leading-8">
-            <li class="flex">
-                <label class="flex-1" for="MRN">MRN:</label>
-                <span class="flex-1">{{$user->mrn}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Reference">Reference no:</label>
-                <span class="flex-1">{{$user->reference_тo}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Gender">Gender:</label>
-                <span class="flex-1">{{$user->gender}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="DateB">Date of birth:</label>
-                <span class="flex-1">{{$user->birth_date}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Location">Location:</label>
-                <span class="flex-1">{{$user->location}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="ID">Lab ID:</label>
-                <span class="flex-1">{{$user->lab_id}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Sample">Sample No:</label>
-                <span class="flex-1">{{$user->sample_no}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Passport">Passport No:</label>
-                <span class="flex-1">{{$user->passport_no}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Reg">Reg Date:</label>
-                <span class="flex-1">{{$user->reg_date}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Collection">Collection Date:</label>
-                <span class="flex-1">{{$user->collection_date}}</span>
-            </li>
-            <li class="flex">
-                <label class="flex-1" for="Reporting">Reporting Date:</label>
-                <span class="flex-1">{{$user->reporting_date}}</span>
-            </li>
-        </ul>
+<main id="mobileOnly" class="md:hidden block">
+    <img src="{{URL('storage/img/mobiNav.png')}}" alt="">
+    <div class="container mx-auto px-4 py-4 mobileOnly">
+        <div class="text-gray-600 font-medium">
+            <h4 class="text-lg uppercase">{{ $user['name']}}</h4>
+            <h4 class="text-lg uppercase mt-3">COVID-19 by RT-PCR Result</h4>
+            <ul class="leading-10">
+                <li class="flex">
+                    <label class="flex-1" for="DateB">Date of birth:</label>
+                    <span class="flex-1">{{$user->birth_date}}</span>
+                </li>
+                <li class="flex">
+                    <label class="flex-1" for="Passport">Passport No:</label>
+                    <span class="flex-1">{{$user->passport_no}}</span>
+                </li>
+                <li class="flex">
+                    <label class="flex-1" for="Reg">Request Date:</label>
+                    <span class="flex-1">{{$user->reg_date}}</span>
+                </li>
+                <li class="flex">
+                    <label class="flex-1" for="Collection">Collection Date:</label>
+                    <span class="flex-1">{{$user->collection_date}}</span>
+                </li>
+                <li class="flex">
+                    <label class="flex-1" for="Reporting">Reporting Date:</label>
+                    <span class="flex-1">{{$user->reporting_date}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="mt-5  p-2 rounded-md bg-white shadow-md">
+            <h5 class="text-lg font-medium border-b border-gray-200 pb-3 text-gray-600">Coronavirus, RNA (SARS-Co V-2, Real-time PCR) smear qualitative</h5>
+            <p style="font-size: 14px" class="mt-2 py-3">
+               COVID-19 by Rt-PCR - NOT DETECTED(NEGATIVE)
+            </p>
+        </div>
+        <div class="mt-5  p-2 rounded-md bg-white shadow-md">
+            <h5 class="text-lg font-medium border-b border-gray-200 pb-3 text-gray-600">Menalab - Dubai - UAE</h5>
+        </div>
     </div>
-    <div class="mt-5  p-2 rounded-md bg-white shadow-md">
-        <h5 class="text-lg font-medium border-b border-gray-200 pb-3 text-gray-600">Coronavirus, RNA (SARS-Co V-2, Real-time PCR) smear qualitative</h5>
-        <p style="font-size: 14px" class="mt-2 py-3">
-           COVID-19 by Rt-PCR - NOT DETECTED(NEGATIVE)
-        </p>
+    <div class="w-full bg-red-500 text-white">
+        <div class="container mx-auto px-4 py-3 text-xxs">
+            Сайт работает на Wordpress | Тема: industryup, автор Themeansar
+        </div>
     </div>
-    <div class="mt-5  p-2 rounded-md bg-white shadow-md">
-        <h5 class="text-lg font-medium border-b border-gray-200 pb-3 text-gray-600">Menalab - Dubai - UAE</h5>
-    </div>
+    <a href="#mobileOnly" class="h-12 w-12 bg-red-600/80 rounded-full fixed right-3 bottom-3 flex items-center justify-center">
+        <svg class="transform rotate-180" xmlns="http://www.w3.org/2000/svg" height="48" width="48" fill="#fff"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/></svg>
+    </a>
 </main>
 
 @auth
